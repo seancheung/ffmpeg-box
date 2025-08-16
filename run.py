@@ -3,6 +3,7 @@ from tools.convert_video import draw_convert_video, run_convert_video
 from tools.embed_subtitles import draw_embed_subtitles, run_embed_subtitles
 from tools.cut_video import draw_cut_video, run_cut_video
 from tools.merge_videos import draw_merge_videos, run_merge_videos
+from tools.split_subtitle import draw_split_subtitle, run_split_subtitle
 
 tools = [
     "Select a tool...",
@@ -10,6 +11,7 @@ tools = [
     "Merge Videos",
     "Cut Video",
     "Embed Subtitles",
+    "Split Subtitle",
 ]
 
 with gr.Blocks(title="FFmpeg Box - Video Processing Tools") as app:
@@ -38,6 +40,9 @@ with gr.Blocks(title="FFmpeg Box - Video Processing Tools") as app:
             case "Merge Videos":
                 tool_inputs = draw_merge_videos()
                 run_button.click(fn=run_merge_videos, inputs=tool_inputs)
+            case "Split Subtitle":
+                tool_inputs = draw_split_subtitle()
+                run_button.click(fn=run_split_subtitle, inputs=tool_inputs)
             case _:
                 gr.Markdown("## Welcome to FFmpeg Box")
                 gr.Markdown(
